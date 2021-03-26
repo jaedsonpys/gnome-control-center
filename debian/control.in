@@ -64,7 +64,7 @@ Vcs-Git: https://salsa.debian.org/gnome-team/gnome-control-center.git
 Vcs-Browser: https://salsa.debian.org/gnome-team/gnome-control-center
 
 Package: gnome-control-center
-Architecture: any
+Architecture: amd64
 Depends: ${misc:Depends},
          ${shlibs:Depends},
          accountsservice,
