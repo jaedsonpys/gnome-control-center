@@ -398,7 +398,6 @@ static const gchar * const panel_order[] = {
   "thunderbolt",
   "usage",
   "lock",
-  "diagnostics",
 
   /* Devices page */
   "sound",

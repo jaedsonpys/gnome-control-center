@@ -40,7 +40,6 @@ panels/default-apps/cc-default-apps-panel.ui
 panels/default-apps/gnome-default-apps-panel.desktop.in.in
 panels/diagnostics/cc-diagnostics-panel.c
 panels/diagnostics/cc-diagnostics-panel.ui
-panels/diagnostics/gnome-diagnostics-panel.desktop.in.in
 panels/display/cc-display-panel.c
 panels/display/cc-display-panel.ui
 panels/display/cc-display-settings.c
