@@ -32,7 +32,8 @@ typedef enum
   CC_PANEL_LIST_MAIN,
   CC_PANEL_LIST_PRIVACY,
   CC_PANEL_LIST_WIDGET,
-  CC_PANEL_LIST_SEARCH
+  CC_PANEL_LIST_SEARCH,
+  CC_PANEL_LIST_DESKTOP
 } CcPanelListView;
 
 #define CC_TYPE_PANEL_LIST (cc_panel_list_get_type())

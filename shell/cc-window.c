@@ -279,6 +279,10 @@ update_list_title (CcWindow *self)
       title = g_strdup (_("Settings"));
       break;
 
+    case CC_PANEL_LIST_DESKTOP:
+      title = g_strdup (_("Desktop"));
+      break;
+
     case CC_PANEL_LIST_WIDGET:
       find_iter_for_panel_id (self, self->current_panel_id, &iter);
       gtk_tree_model_get (GTK_TREE_MODEL (self->store),

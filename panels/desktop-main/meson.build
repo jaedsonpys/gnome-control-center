@@ -1,0 +1,30 @@
+panels_list += cappletname
+desktop = 'gnome-@0@-panel.desktop'.format(cappletname)
+
+desktop_in = configure_file(
+  input: desktop + '.in.in',
+  output: desktop + '.in',
+  configuration: desktop_conf
+)
+
+i18n.merge_file(
+  desktop,
+  type: 'desktop',
+  input: desktop_in,
+  output: desktop,
+  po_dir: po_dir,
+  install: true,
+  install_dir: control_center_desktopdir
+)
+
+sources = files('cc-desktop-main-panel.c')
+
+cflags += '-DGNOMELOCALEDIR="@0@"'.format(control_center_localedir)
+
+panels_libs += static_library(
+  cappletname,
+  sources: sources,
+  include_directories: [top_inc, common_inc],
+  dependencies: common_deps + [dependency('pop_desktop_widget')],
+  c_args: cflags
+)

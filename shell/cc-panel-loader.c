@@ -69,6 +69,7 @@ extern GType cc_camera_panel_get_type (void);
 extern GType cc_microphone_panel_get_type (void);
 extern GType cc_usage_panel_get_type (void);
 extern GType cc_lock_panel_get_type (void);
+extern GType cc_desktop_main_panel_get_type (void);
 
 /* Static init functions */
 #ifdef BUILD_NETWORK
@@ -126,6 +127,7 @@ static CcPanelLoaderVtable default_panels[] =
 #ifdef BUILD_WACOM
   PANEL_TYPE("wacom",            cc_wacom_panel_get_type,                cc_wacom_panel_static_init_func),
 #endif
+  PANEL_TYPE("desktop-main",     cc_desktop_main_panel_get_type,         NULL),
 };
 
 /* Override for the panel vtable. When NULL, the default_panels will
@@ -161,6 +163,8 @@ parse_categories (GDesktopAppInfo *app)
     retval = CC_CATEGORY_DETAILS;
   else if (g_strv_contains (const_strv (split), "X-GNOME-PrivacySettings"))
     retval = CC_CATEGORY_PRIVACY;
+  else if (g_strv_contains (const_strv (split), "X-POP-DesktopSettings"))
+    retval = CC_CATEGORY_DESKTOP;
   else if (g_strv_contains (const_strv (split), "HardwareSettings"))
     retval = CC_CATEGORY_HARDWARE;
 

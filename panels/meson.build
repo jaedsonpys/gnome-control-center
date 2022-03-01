@@ -25,7 +25,8 @@ panels = [
   'sound',
   'universal-access',
   'usage',
-  'user-accounts'
+  'user-accounts',
+  'desktop-main'
 ]
 
 if host_is_linux
