@@ -17,19 +17,31 @@ games). In lieu of that, it seems good to expose the setting here.
  panels/mouse/cc-mouse-panel.ui | 52 ++++++++++++++++++++++++++++++++++
  2 files changed, 58 insertions(+)
 
-diff --git a/panels/mouse/cc-mouse-panel.c b/panels/mouse/cc-mouse-panel.c
-index a7f018bc4..880504f03 100644
 --- a/panels/mouse/cc-mouse-panel.c
 +++ b/panels/mouse/cc-mouse-panel.c
-@@ -36,6 +36,7 @@ struct _CcMousePanel
+@@ -36,6 +36,8 @@
  {
    CcPanel            parent_instance;
  
++  GtkSwitch         *disable_while_typing_row;
 +  GtkSwitch         *disable_while_typing_switch;
    GtkListBoxRow     *edge_scrolling_row;
    GtkSwitch         *edge_scrolling_switch;
    GtkListBox        *general_listbox;
-@@ -301,6 +302,10 @@ setup_dialog (CcMousePanel *self)
+@@ -310,6 +312,12 @@
+                                 touchpad_enabled_get_mapping,
+                                 touchpad_enabled_set_mapping,
+                                 NULL, NULL);
++  g_settings_bind_with_mapping (self->touchpad_settings, "send-events",
++                                self->disable_while_typing_row, "sensitive",
++                                G_SETTINGS_BIND_GET,
++                                touchpad_enabled_get_mapping,
++                                touchpad_enabled_set_mapping,
++                                NULL, NULL);
+ 
+   g_settings_bind (self->touchpad_settings, "natural-scroll",
+                          self->touchpad_natural_scrolling_switch, "active",
+@@ -331,6 +339,10 @@
                     self->edge_scrolling_switch, "state",
                     G_SETTINGS_BIND_GET);
  
@@ -40,24 +52,23 @@ index a7f018bc4..880504f03 100644
    setup_touchpad_options (self);
  }
  
-@@ -420,6 +425,7 @@ cc_mouse_panel_class_init (CcMousePanelClass *klass)
+@@ -451,6 +463,8 @@
  
    gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/control-center/mouse/cc-mouse-panel.ui");
  
++  gtk_widget_class_bind_template_child (widget_class, CcMousePanel, disable_while_typing_row);
 +  gtk_widget_class_bind_template_child (widget_class, CcMousePanel, disable_while_typing_switch);
    gtk_widget_class_bind_template_child (widget_class, CcMousePanel, edge_scrolling_row);
    gtk_widget_class_bind_template_child (widget_class, CcMousePanel, edge_scrolling_switch);
    gtk_widget_class_bind_template_child (widget_class, CcMousePanel, general_listbox);
-diff --git a/panels/mouse/cc-mouse-panel.ui b/panels/mouse/cc-mouse-panel.ui
-index bcfde6de6..747b0f354 100644
 --- a/panels/mouse/cc-mouse-panel.ui
 +++ b/panels/mouse/cc-mouse-panel.ui
-@@ -692,6 +692,58 @@
+@@ -746,6 +746,58 @@
                                      </child>
                                    </object>
                                  </child>
 +                                <child>
-+                                  <object class="GtkListBoxRow">
++                                  <object class="GtkListBoxRow" id="disable_while_typing_row">
 +                                    <property name="visible">True</property>
 +                                    <property name="can_focus">True</property>
 +                                    <property name="activatable">false</property>
@@ -111,6 +122,3 @@ index bcfde6de6..747b0f354 100644
                                </object>
                              </child>
                            </object>
--- 
-2.27.0
-
