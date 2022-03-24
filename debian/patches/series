@@ -24,7 +24,7 @@ debian/Expose-touchpad-settings-if-synaptics-is-in-use.patch
 debian/Debian-s-adduser-doesn-t-allow-uppercase-letters-by-defau.patch
 # debian/info-overview-Use-the-Vendor-logo-prominently.patch
 debian/Revert-build-Bump-build-dependency-on-polkit.patch
-ubuntu/distro-logo.patch
+# ubuntu/distro-logo.patch
 ubuntu/keyboard-Add-launch-terminal-shortcut.patch
 ubuntu/sound-Allow-volume-to-be-set-above-100.patch
 # ubuntu/Allow-tweaking-some-settings-for-Ubuntu-Dock.patch
@@ -77,6 +77,7 @@ ubuntu/display-Ensure-we-list-all-the-available-scaling-values.patch
 ubuntu/Fix-volume-adjustment-failure-on-volume-slider.patch
 
 # Pop patches
+pop/distro-logo.patch
 pop/pop-allow-sound-above-100.patch
 pop/pop-mouse-accel.patch
 pop/pop-shop.patch
@@ -85,12 +86,10 @@ pop/pop-hidpi.patch
 pop/system76-firmware.patch
 pop/pop-alert-sound.patch
 pop/remove-diagnostics.patch
-pop/gsettings-desktop-schemas-version.patch
 pop/0001-mouse-Add-Disable-While-Typing-toggle-for-touchpad.patch
 pop/0001-Do-not-enforce-password-strength-requirements.patch
 pop/0002-users-Recreate-RunHandler-on-failure.patch
 pop/cc-search-locations-dialog.patch
-pop/0001-shell-Fix-bug-when-multiple-panels-use-custom-sideba.patch
 pop/pop-no-search.patch
 pop/0001-keyboard-Pop-_OS-changes-with-support-for-multiple-b.patch
 pop/pop-support.patch
